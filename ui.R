@@ -17,9 +17,10 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       plotOutput("p"),
+      br(),
       p(),
       p(),
-      em("Note: data includes all hospitals in RI and a selected few in MA")
+      p("Note: data includes all hospitals in RI and a selected few in MA. Three benchmarks are included: ", code("Nat_Avg"), " is the National Average, ", code("RI"), " is the Rhode Island average and ", code("MA"), " is the Massachusetts average (for all MA hospitals in the Hospital Compare dataset, not just those selected).")
     )
   )
 ))
