@@ -19,7 +19,7 @@ shinyUI(fluidPage(
       
       p("Data Source: ", a("CMS Hospital Compare", href = "https://data.medicare.gov/data/hospital-compare")),
       p("Code: ", a("Github Repository", href = "https://github.com/andylytics/hosp_compare")),
-      p("Created by: ", a("Andy Rosa", href = "https://twitter.com/andylytics"))
+      p("Created by: ", a("Andy Rosa", href = "https://www.linkedin.com/pub/andrew-rosa/99/787/a64"))
       
     ),
     mainPanel(
