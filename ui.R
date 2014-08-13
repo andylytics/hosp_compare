@@ -11,15 +11,15 @@ shinyUI(fluidPage(
                   selected = "BETH ISRAEL DEACONESS MEDICAL CENTER"),
       br(),
       
-      #checkboxInput("cbvar",
-      #              label = "Add Smoothing",
-      #              value = TRUE),
+      checkboxInput("cbvar",
+                    label = "Add Smoothing",
+                    value = FALSE),
       
       br(),
       
-      h6("Data Source: ", a("CMS Hospital Compare", href = "https://data.medicare.gov/data/hospital-compare")),
-      h6("Code: ", a("Github Repository", href = "https://github.com/andylytics/hosp_compare")),
-      h6("Created by: ", a("Andy Rosa", href = "https://twitter.com/andylytics"))
+      p("Data Source: ", a("CMS Hospital Compare", href = "https://data.medicare.gov/data/hospital-compare")),
+      p("Code: ", a("Github Repository", href = "https://github.com/andylytics/hosp_compare")),
+      p("Created by: ", a("Andy Rosa", href = "https://twitter.com/andylytics"))
       
     ),
     mainPanel(

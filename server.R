@@ -15,16 +15,32 @@ shinyServer(function(input, output) {
   output$p <- renderPlot({
     pd <- filter(d, variable %in% c(input$var, benchmarks))
     pd$variable <- factor(pd$variable, levels = c(input$var, benchmarks))
-    ggplot(pd, aes(EndDate, value, colour = factor(variable))) +
-      #stat_smooth(method = "lm", aes(fill = factor(variable))) +
-      geom_line() +
-      scale_x_date(breaks = filter(d, variable == input$var)$EndDate) +
-      scale_colour_discrete(breaks = levels(pd$variable)) +
-      geom_point(size = 5) +
-      xlab("12 months ending date") +
-      ylab("Percentage Rating of 9 or 10") +
-      ggtitle(paste0("HCAHPS Percent of Patients who gave a 9 or 10 Rating")) +
-      theme(axis.text.x = element_text(angle = 90, size = 14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 12), legend.title = element_blank())
+    
+    if (input$cbvar == FALSE){
+      ggplot(pd, aes(EndDate, value, colour = factor(variable))) +
+        #stat_smooth(method = "lm", aes(fill = factor(variable))) +
+        geom_line() +
+        scale_x_date(breaks = filter(d, variable == input$var)$EndDate) +
+        scale_colour_discrete(breaks = levels(pd$variable)) +
+        geom_point(size = 5) +
+        xlab("12 months ending date") +
+        ylab("Percentage Rating of 9 or 10") +
+        ggtitle(paste0("HCAHPS Percent of Patients\nwho gave a 9 or 10 Rating")) +
+        theme(axis.text.x = element_text(angle = 90, size = 14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 12), legend.title = element_blank())
+    }
+    else {
+      ggplot(pd, aes(EndDate, value, colour = factor(variable))) +
+        stat_smooth(method = "lm", aes(fill = factor(variable))) +
+        #geom_line() +
+        scale_x_date(breaks = filter(d, variable == input$var)$EndDate) +
+        scale_colour_discrete(breaks = levels(pd$variable)) +
+        geom_point(size = 5) +
+        xlab("12 months ending date") +
+        ylab("Percentage Rating of 9 or 10") +
+        ggtitle(paste0("HCAHPS Percent of Patients\nwho gave a 9 or 10 Rating")) +
+        theme(axis.text.x = element_text(angle = 90, size = 14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 12), legend.title = element_blank())
+    }
+    
       
       #scale_x_discrete(breaks = unique(d.plot$EndDate))
   })
