@@ -7,7 +7,9 @@ d$EndDate[d$EndDate == "3/31/2013"] <- "03/31/2013"
 d$StartDate <- as.Date(d$StartDate, "%m/%d/%Y")
 d$EndDate <- as.Date(d$EndDate, "%m/%d/%Y")
 
-d <- arrange(d, StartDate, type, variable)
+d$variable <- factor(d$variable, levels = unique(d$variable))
+
+#d <- arrange(d, StartDate, type, variable)
 
 hospitals <- d %>%
   filter(type == "Hospital") %>%
